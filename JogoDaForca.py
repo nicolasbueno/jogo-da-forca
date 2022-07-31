@@ -16,6 +16,8 @@ palavras_forca = list()
 palavras_frutas = ['MACA', 'BANANA', 'MORANGO', 'JACA', 'MANGA', 'PERA', 'BERGAMOTA', 'MAMAO', 'KIWI', 'CARAMBOLA', 'MELANCIA', 'ABACATE', 'ABACAXI', 'ACAI', 'ACEROLA', 'AMORA', 'CAQUI', 'CEREJA', 'FRAMBOESA', 'FIGO', 'GOIABA', 'JABUTICABA', 'LARANJA', 'LIMAO', 'MARACUJA', 'MELAO', 'MORANGO', 'PESSEGO', 'PITANGA', 'PITAYA', 'UVA']
 palavras_animais = ['CACHORRO', 'GATO', 'GALINHA', 'PORCO', 'BOI', 'VACA', 'MACACO', 'COELHO', 'JAVALI', 'LEAO', 'LEOPARDO', 'PEIXE', 'TUBARAO', 'GOLFINHO', 'ELEFANTE', 'GIRAFA', 'TARTARUGA', 'COBRA', 'TIGRE', 'LEBRE', 'CAPIVARA', 'VEADO', 'HIPOPOTAMO', 'GUAXINIM', 'GAMBA', 'FOCA', 'BALEIA', 'RATO', 'CAMALEAO', 'FLAMINGO, JACARE']
 palavras_cidades = ['PORTO ALEGRE', 'PARIS', 'CANOAS', 'GRAVATAI', 'NOVA YORK', 'JERUSALEM', 'BERLIM', 'AMSTERDA', 'GRAMADO', 'CANELA', 'MOSCOU', 'CAIRO', 'BUENOS AIRES','PUNTA DEL LESTE', 'MONTEVIDEU', 'ASSUNCAO', 'CURITIBA', 'SANTIAGO', 'SYDNEY', 'HONG KONG', 'LONDRES', 'SINGAPURA', 'DUBAI', 'PORTO', 'VANCOUVER', 'LIVERPOOL']
+palavras_corpohumano = ['CABEÇA', 'TRONCO', 'BRAÇO', 'MAO', 'PERNA', 'PE', 'OLHOS', 'ORELHA', 'NARIZ', 'BOCA', 'FIGADO', 'CORACAO', 'PULMAO', 'ESTOMAGO', 'GARGANTA', 'DEDO', 'PULSO', 'UNHA', 'OMBRO', 'CEREBRO', 'LINGUA', 'ESOFAGO', 'PANCREAS', 'OSSOS', 'JOELHO', 'COXA', 'TORNOZELO', 'NUCA', 'PESCOCO', 'QUADRIL', 'PELE', 'ABDOMEN']
+palavras_paises = ['ITALIA', 'EQUADOR', 'HOLANDA', 'INGLATERRA', 'ESTADOS UNIDOS', 'ARGENTINA', 'MEXICO', 'POLONIA', 'UCRANIA', 'RUSSIA', 'CHINA', 'FRANCA', 'AUSTRALIA', 'DINAMARCA', 'ESPANHA', 'ALEMANHA', 'JAPAO', 'BELGICA', 'CANADA', 'CROACIA', 'MARROCOS', 'EGITO', 'BRASIL', 'SUICA', 'PORTUGAL', 'URUGUAI', 'COREIA DO SUL', 'AFRICA DO SUL']
 
 # PERGUNTANDO O NOME
 nome_jogador = input('Olá, qual é o seu nome? ')
@@ -29,7 +31,7 @@ while jogar_novamente == 'S':
 
     # SAUDAÇÃO E ESCOLHA DO TEMA DAS PALAVRAS
     print(f'Olá, {nome_jogador}! Seja bem-vindo(a) ao Jogo da Forca!\n')
-    tipo_de_palavras = int(input(('Que tipo de palavras você prefere?\n1 - Frutas\n2 - Animais\n3 - Cidades\n---> ')))
+    tipo_de_palavras = int(input(('Que tipo de palavras você prefere?\n1 - Frutas\n2 - Animais\n3 - Cidades\n4 - Corpo Humano\n5 - Países\n---> ')))
 
     # LIMPANDO O CONSOLE
     os.system('cls')
@@ -37,13 +39,19 @@ while jogar_novamente == 'S':
     # DEFININDO TIPO DE PALAVRAS
     if tipo_de_palavras == 1:
         palavras_forca.extend(palavras_frutas)
-        print('Legal, você escolheu frutas!!\n')
+        print('Legal, você escolheu Frutas!!\n')
     elif tipo_de_palavras == 2:
         palavras_forca.extend(palavras_animais)
-        print('Legal, você escolheu animais!!\n')
+        print('Legal, você escolheu Animais!!\n')
     elif tipo_de_palavras == 3:
         palavras_forca.extend(palavras_cidades)
-        print('Legal, você escolheu cidades!!\nCaso a cidade possua duas palavras utilize o traço "-" para juntar os nomes!\nExemplo "DOIS IRMAOS" será "DOIS-IRMAOS"\n')
+        print('Legal, você escolheu Cidades!!\n')
+    elif tipo_de_palavras == 4:
+        palavras_forca.extend(palavras_corpohumano)
+        print('Legal, você escolheu Corpo Humano!!\n')
+    elif tipo_de_palavras == 5:
+        palavras_forca.extend(palavras_paises)
+        print('Legal, você escolheu Países!!\n')
     else:
         palavras_forca.extend(palavras_frutas)
         print('Você não escolheu uma opção válida :/\nEntão escolhemos frutas para você!\n')
