@@ -6,7 +6,10 @@ import os
 from time import sleep
 
 #PALAVRAS PARA FORCA
-palavras_forca = ['MACA', 'BANANA', 'MORANGO', 'JACA', 'MANGA', 'PERA', 'BERGAMOTA', 'MAMAO', 'KIWI', 'CARAMBOLA', 'MELANCIA', 'ABACATE', 'ABACAXI', 'ACAI', 'ACEROLA', 'AMORA', 'CAQUI', 'CEREJA', 'FRAMBOESA', 'FIGO', 'GOIABA', 'JABUTICABA', 'LARANJA', 'LIMAO', 'MARACUJA', 'MELAO', 'MORANGO', 'PESSEGO', 'PITANGA', 'PITAYA', 'UVA']
+palavras_forca = list()
+palavras_frutas = ['MACA', 'BANANA', 'MORANGO', 'JACA', 'MANGA', 'PERA', 'BERGAMOTA', 'MAMAO', 'KIWI', 'CARAMBOLA', 'MELANCIA', 'ABACATE', 'ABACAXI', 'ACAI', 'ACEROLA', 'AMORA', 'CAQUI', 'CEREJA', 'FRAMBOESA', 'FIGO', 'GOIABA', 'JABUTICABA', 'LARANJA', 'LIMAO', 'MARACUJA', 'MELAO', 'MORANGO', 'PESSEGO', 'PITANGA', 'PITAYA', 'UVA']
+palavras_animais = ['CACHORRO', 'GATO', 'GALINHA', 'PORCO', 'BOI', 'VACA', 'MACACO', 'COELHO', 'JAVALI', 'LEAO', 'LEOPARDO', 'PEIXE', 'TUBARAO', 'GOLFINHO', 'ELEFANTE', 'GIRAFA', 'TARTARUGA', 'COBRA', 'TIGRE', 'LEBRE', 'CAPIVARA', 'VEADO', 'HIPOPOTAMO', 'GUAXINIM', 'GAMBA', 'FOCA', 'BALEIA', 'RATO']
+palavras_cidades = ['PORTO-ALEGRE', 'PARIS', 'CANOAS', 'GRAVATAI', 'NOVA-YORK', 'JERUSALEM', 'BERLIM', 'AMSTERDA', 'GRAMADO', 'CANELA', 'MOSCOU', 'CAIRO', 'BUENOS-AIRES','PUNTA-DEL-LESTE', 'MONTEVIDEU', 'ASSUNCAO', 'CURITIBA', 'SANTIAGO', 'SYDNEY']
 
 # PERGUNTANDO O NOME
 nome_jogador = input('Olá, qual é o seu nome? ')
@@ -17,7 +20,27 @@ os.system('cls')
 jogar_novamente = 'S'
 
 while jogar_novamente == 'S':
-    
+
+    print(f'Olá, {nome_jogador}! Seja bem-vindo(a) ao Jogo da Forca!\n')
+    tipo_de_palavras = int(input(('Que tipo de palavras você prefere?\n1 - Frutas\n2 - Animais\n3 - Cidades\n---> ')))
+
+    # LIMPANDO O CONSOLE
+    os.system('cls')
+
+    # DEFININDO TIPO DE PALAVRAS
+    if tipo_de_palavras == 1:
+        palavras_forca.extend(palavras_frutas)
+        print('Legal, você escolheu frutas!!\n')
+    elif tipo_de_palavras == 2:
+        palavras_forca.extend(palavras_animais)
+        print('Legal, você escolheu animais!!\n')
+    elif tipo_de_palavras == 3:
+        palavras_forca.extend(palavras_cidades)
+        print('Legal, você escolheu cidades!!\n')
+    else:
+        palavras_forca.extend(palavras_frutas)
+        print('Você não escolheu uma opção válida :/\nEntão escolhemos frutas para você!\n')
+
     # DEFININDO PALAVRA ALEATÓRIA E OBTENDO NÚMERO DE LETRAS - CRIAÇÃO DE VARIÁVEIS
     indice_aleatório = random.randint(0, 30)
     palavra = palavras_forca[indice_aleatório]
@@ -36,10 +59,7 @@ while jogar_novamente == 'S':
     for i in range(qtde_letras):
         palavra_mostrada.append('_ ')   
 
-    # INICIANDO O JOGO
-    print(f'Olá, {nome_jogador}! Seja bem-vindo(a) ao Jogo da Forca!\n')
     print(f'Sua palavra tem {qtde_letras} letras!')
-    print('Quer uma dica?! A palavra é uma fruta!')
     input('Pressione ENTER para iniciar o jogo... ')
 
     # LIMPANDO O CONSOLE
