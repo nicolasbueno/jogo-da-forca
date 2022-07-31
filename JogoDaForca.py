@@ -14,8 +14,8 @@ boneco_forca_2 = '					 0\n			       		 |  '
 boneco_forca_1 = '					 0 '
 palavras_forca = list()
 palavras_frutas = ['MACA', 'BANANA', 'MORANGO', 'JACA', 'MANGA', 'PERA', 'BERGAMOTA', 'MAMAO', 'KIWI', 'CARAMBOLA', 'MELANCIA', 'ABACATE', 'ABACAXI', 'ACAI', 'ACEROLA', 'AMORA', 'CAQUI', 'CEREJA', 'FRAMBOESA', 'FIGO', 'GOIABA', 'JABUTICABA', 'LARANJA', 'LIMAO', 'MARACUJA', 'MELAO', 'MORANGO', 'PESSEGO', 'PITANGA', 'PITAYA', 'UVA']
-palavras_animais = ['CACHORRO', 'GATO', 'GALINHA', 'PORCO', 'BOI', 'VACA', 'MACACO', 'COELHO', 'JAVALI', 'LEAO', 'LEOPARDO', 'PEIXE', 'TUBARAO', 'GOLFINHO', 'ELEFANTE', 'GIRAFA', 'TARTARUGA', 'COBRA', 'TIGRE', 'LEBRE', 'CAPIVARA', 'VEADO', 'HIPOPOTAMO', 'GUAXINIM', 'GAMBA', 'FOCA', 'BALEIA', 'RATO']
-palavras_cidades = ['PORTO-ALEGRE', 'PARIS', 'CANOAS', 'GRAVATAI', 'NOVA-YORK', 'JERUSALEM', 'BERLIM', 'AMSTERDA', 'GRAMADO', 'CANELA', 'MOSCOU', 'CAIRO', 'BUENOS-AIRES','PUNTA-DEL-LESTE', 'MONTEVIDEU', 'ASSUNCAO', 'CURITIBA', 'SANTIAGO', 'SYDNEY']
+palavras_animais = ['CACHORRO', 'GATO', 'GALINHA', 'PORCO', 'BOI', 'VACA', 'MACACO', 'COELHO', 'JAVALI', 'LEAO', 'LEOPARDO', 'PEIXE', 'TUBARAO', 'GOLFINHO', 'ELEFANTE', 'GIRAFA', 'TARTARUGA', 'COBRA', 'TIGRE', 'LEBRE', 'CAPIVARA', 'VEADO', 'HIPOPOTAMO', 'GUAXINIM', 'GAMBA', 'FOCA', 'BALEIA', 'RATO', 'CAMALEAO', 'FLAMINGO, JACARE']
+palavras_cidades = ['PORTO ALEGRE', 'PARIS', 'CANOAS', 'GRAVATAI', 'NOVA YORK', 'JERUSALEM', 'BERLIM', 'AMSTERDA', 'GRAMADO', 'CANELA', 'MOSCOU', 'CAIRO', 'BUENOS AIRES','PUNTA DEL LESTE', 'MONTEVIDEU', 'ASSUNCAO', 'CURITIBA', 'SANTIAGO', 'SYDNEY', 'HONG KONG', 'LONDRES', 'SINGAPURA', 'DUBAI', 'PORTO', 'VANCOUVER', 'LIVERPOOL']
 
 # PERGUNTANDO O NOME
 nome_jogador = input('Olá, qual é o seu nome? ')
@@ -64,7 +64,11 @@ while jogar_novamente == 'S':
     aux2 = 0
 
     for i in range(qtde_letras):
-        palavra_mostrada.append('_ ')   
+        if lista_palavra[i] == ' ':
+            palavra_mostrada.append('  ')
+            acertos = acertos + 1
+        else:
+            palavra_mostrada.append('_ ')   
 
     print(f'Sua palavra tem {qtde_letras} letras!')
     input('Pressione ENTER para iniciar o jogo... ')
@@ -110,6 +114,8 @@ while jogar_novamente == 'S':
             else:
                 print('Você errou a palavara!')
                 erros_faltantes = erros_faltantes - 1
+        elif letra == ' ':
+            print('Espaço não é letra! Favor digitar uma letra!')        
         else: 
             # IDENTIFICA SE A LETRA JÁ FOI DIGITADA ANTES
             if len(letras_usadas) > 0:
