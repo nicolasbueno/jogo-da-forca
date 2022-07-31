@@ -6,12 +6,13 @@ import os
 from time import sleep
 
 #PALAVRAS PARA FORCA
-boneco_forca_6 = '					 0\n			       		/|\ \n			       		/ \ '
-boneco_forca_5 = '					 0\n			       		/|\ \n			       		/   '
-boneco_forca_4 = '					 0\n			       		/|\ '
-boneco_forca_3 = '					 0\n			       		/|  '
-boneco_forca_2 = '					 0\n			       		 |  '
-boneco_forca_1 = '					 0 '
+boneco_forca = '  					_______\n    					|     0\n    					|    /|\ \n    					|    / \ '
+boneco_forca_1 = '  					_______\n    					|     0\n    					|    /|\ \n    					|    / '
+boneco_forca_2 = '  					_______\n    					|     0\n    					|    /|\ \n    					|'
+boneco_forca_3 = '  					_______\n    					|     0\n    					|    /| \n    					|'
+boneco_forca_4 = '  					_______\n    					|     0\n    					|     | \n    					|'
+boneco_forca_5 = '  					_______\n    					|     0\n    					|       \n    					|'
+boneco_forca_6 = ' 					_______\n    					|\n    					|\n    					|' 
 palavras_forca = list()
 palavras_frutas = ['MACA', 'BANANA', 'MORANGO', 'JACA', 'MANGA', 'PERA', 'BERGAMOTA', 'MAMAO', 'KIWI', 'CARAMBOLA', 'MELANCIA', 'ABACATE', 'ABACAXI', 'ACAI', 'ACEROLA', 'AMORA', 'CAQUI', 'CEREJA', 'FRAMBOESA', 'FIGO', 'GOIABA', 'JABUTICABA', 'LARANJA', 'LIMAO', 'MARACUJA', 'MELAO', 'MORANGO', 'PESSEGO', 'PITANGA', 'PITAYA', 'UVA']
 palavras_animais = ['CACHORRO', 'GATO', 'GALINHA', 'PORCO', 'BOI', 'VACA', 'MACACO', 'COELHO', 'JAVALI', 'LEAO', 'LEOPARDO', 'PEIXE', 'TUBARAO', 'GOLFINHO', 'ELEFANTE', 'GIRAFA', 'TARTARUGA', 'COBRA', 'TIGRE', 'LEBRE', 'CAPIVARA', 'VEADO', 'HIPOPOTAMO', 'GUAXINIM', 'GAMBA', 'FOCA', 'BALEIA', 'RATO', 'CAMALEAO', 'FLAMINGO, JACARE']
@@ -85,6 +86,19 @@ while jogar_novamente == 'S':
     os.system('cls')
 
     while erros_faltantes > 0:
+        if tipo_de_palavras == 1:
+            print('----------------- TEMA: FRUTAS -----------------\n')
+        elif tipo_de_palavras == 2:
+            print('----------------- TEMA: ANIMAIS -----------------\n')
+        elif tipo_de_palavras == 3:
+            print('----------------- TEMA: CIDADES -----------------\n')
+        elif tipo_de_palavras == 4:
+            print('----------------- TEMA: CORPO HUMANO -----------------\n')
+        elif tipo_de_palavras == 5:
+            print('----------------- TEMA: PAÍSES -----------------\n')
+        else:
+            print('----------------- TEMA: FRUTAS -----------------\n')
+
         print(f'Você só pode errar {erros_faltantes} vezes até acertar a palavra!')
         print('\n')
         print(''.join(palavra_mostrada))
@@ -169,6 +183,8 @@ while jogar_novamente == 'S':
         print('Parabéns! Você Acertou a palavra!\n')
     else:
         print('Infelizmente você errou 6 vezes! Mas não desista, tente novamente!\n')
+        print(boneco_forca)
+        print('\n')
 
     print('A palavra era', palavra)
     print('\n')
