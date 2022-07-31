@@ -21,6 +21,7 @@ jogar_novamente = 'S'
 
 while jogar_novamente == 'S':
 
+    # SAUDAÇÃO E ESCOLHA DO TEMA DAS PALAVRAS
     print(f'Olá, {nome_jogador}! Seja bem-vindo(a) ao Jogo da Forca!\n')
     tipo_de_palavras = int(input(('Que tipo de palavras você prefere?\n1 - Frutas\n2 - Animais\n3 - Cidades\n---> ')))
 
@@ -73,38 +74,51 @@ while jogar_novamente == 'S':
         if erros_faltantes < 6:
             print('Letras erradas: ', ' '.join(letras_erradas))
             print('\n')
-        letra = input('Escolha uma letra: ').upper()
+        letra = input('Escolha uma letra ou caso saiba a palavra digite "*" (asterisco): ').upper()
         print('\n')
 
-        # IDENTIFICA SE A LETRA JÁ FOI DIGITADA ANTES
-        if len(letras_usadas) > 0:
-            for i in range(len(letras_usadas)):
-                if letras_usadas[i] == letra:
-                    aux2 = aux2 + 1        
-
-        # TESTA SE A LETRA FOI DIGITADA
-        if aux2 > 0:
-            print('Você já digitou essa letra, tente outra!')
-            aux2 = 0
-        else:
-            # IDENTIFICA SE EXISTE A LETRA NA PALAVRA
-            for i in range(qtde_letras):
-                if lista_palavra[i] == letra:
-                    contador = contador + 1
-                    palavra_mostrada.pop(i)
-                    palavra_mostrada.insert(i, letra + ' ')
-                    acertos = acertos + 1
-            letras_usadas.append(letra)
-
-            # IMPRIME NA TELA SE ELE ACERTOU OU NÃO A LETRA
-            if contador > 0:
-                print('Woow! Essa letra existe na sua palavra!')
-                contador = 0
+        if letra == '*':
+            sei_palavra = input('Digite a palavra: ').upper()
+            if sei_palavra == palavra:
+                print('...')
+                sleep(1)
+                print('...')
+                sleep(1)
+                print('...')
+                acertos = qtde_letras
             else:
-                print('Essa letra não existe na palavra!')
-                contador = 0
-                letras_erradas.append(letra)
+                print('Você errou a palavara!')
                 erros_faltantes = erros_faltantes - 1
+        else: 
+            # IDENTIFICA SE A LETRA JÁ FOI DIGITADA ANTES
+            if len(letras_usadas) > 0:
+                for i in range(len(letras_usadas)):
+                    if letras_usadas[i] == letra:
+                        aux2 = aux2 + 1        
+
+            # TESTA SE A LETRA FOI DIGITADA
+            if aux2 > 0:
+                print('Você já digitou essa letra, tente outra!')
+                aux2 = 0
+            else:
+                # IDENTIFICA SE EXISTE A LETRA NA PALAVRA
+                for i in range(qtde_letras):
+                    if lista_palavra[i] == letra:
+                        contador = contador + 1
+                        palavra_mostrada.pop(i)
+                        palavra_mostrada.insert(i, letra + ' ')
+                        acertos = acertos + 1
+                letras_usadas.append(letra)
+
+                # IMPRIME NA TELA SE ELE ACERTOU OU NÃO A LETRA
+                if contador > 0:
+                    print('Woow! Essa letra existe na sua palavra!')
+                    contador = 0
+                else:
+                    print('Essa letra não existe na palavra!')
+                    contador = 0
+                    letras_erradas.append(letra)
+                    erros_faltantes = erros_faltantes - 1
 
         # AGUARDA 3 SEGUNDOS PARA O PROGRAMA CONTINUAR
         sleep(3)
