@@ -19,6 +19,8 @@ palavras_animais = ['CACHORRO', 'GATO', 'GALINHA', 'PORCO', 'BOI', 'VACA', 'MACA
 palavras_cidades = ['PORTO ALEGRE', 'PARIS', 'CANOAS', 'GRAVATAI', 'NOVA YORK', 'JERUSALEM', 'BERLIM', 'AMSTERDA', 'GRAMADO', 'CANELA', 'MOSCOU', 'CAIRO', 'BUENOS AIRES','PUNTA DEL LESTE', 'MONTEVIDEU', 'ASSUNCAO', 'CURITIBA', 'SANTIAGO', 'SYDNEY', 'HONG KONG', 'LONDRES', 'SINGAPURA', 'DUBAI', 'PORTO', 'VANCOUVER', 'LIVERPOOL']
 palavras_corpohumano = ['CABEÇA', 'TRONCO', 'BRAÇO', 'MAO', 'PERNA', 'PE', 'OLHOS', 'ORELHA', 'NARIZ', 'BOCA', 'FIGADO', 'CORAÇAO', 'PULMAO', 'ESTOMAGO', 'GARGANTA', 'DEDO', 'PULSO', 'UNHA', 'OMBRO', 'CEREBRO', 'LINGUA', 'ESOFAGO', 'PANCREAS', 'OSSOS', 'JOELHO', 'COXA', 'TORNOZELO', 'NUCA', 'PESCOCO', 'QUADRIL', 'PELE', 'ABDOMEN']
 palavras_paises = ['ITALIA', 'EQUADOR', 'HOLANDA', 'INGLATERRA', 'ESTADOS UNIDOS', 'ARGENTINA', 'MEXICO', 'POLONIA', 'UCRANIA', 'RUSSIA', 'CHINA', 'FRANCA', 'AUSTRALIA', 'DINAMARCA', 'ESPANHA', 'ALEMANHA', 'JAPAO', 'BELGICA', 'CANADA', 'CROACIA', 'MARROCOS', 'EGITO', 'BRASIL', 'SUICA', 'PORTUGAL', 'URUGUAI', 'COREIA DO SUL', 'AFRICA DO SUL']
+palavras_escolha = list()
+
 
 # PERGUNTANDO O NOME
 nome_jogador = input('Olá, qual é o seu nome? ')
@@ -32,7 +34,7 @@ while jogar_novamente == 'S':
 
     # SAUDAÇÃO E ESCOLHA DO TEMA DAS PALAVRAS
     print(f'Olá, {nome_jogador}! Seja bem-vindo(a) ao Jogo da Forca!\n')
-    tipo_de_palavras = int(input(('Que tipo de palavras você prefere?\n1 - Frutas\n2 - Animais\n3 - Cidades\n4 - Corpo Humano\n5 - Países\n---> ')))
+    tipo_de_palavras = int(input(('Que tipo de palavras você prefere?\n1 - Frutas\n2 - Animais\n3 - Cidades\n4 - Corpo Humano\n5 - Países\n6 - Escolher as palavras\n---> ')))
 
     # LIMPANDO O CONSOLE
     os.system('cls')
@@ -53,6 +55,21 @@ while jogar_novamente == 'S':
     elif tipo_de_palavras == 5:
         palavras_forca.extend(palavras_paises)
         print('Legal, você escolheu Países!!\n')
+    elif tipo_de_palavras == 6:
+        print('Legal! Você quer escolher suas próprias palavras!\n')
+        x = 0
+        while x == 0:
+            p = input('Informe a palavra ou digite "*" (asterisco) para finalizar: ').upper()
+            if p == '*':
+                if len(palavras_escolha) == 0:
+                    print('\nVocê ainda não escolheu nenhuma palavra, para finalizar é necessário que digite pelo menos uma palavra!\n')
+                else:
+                    x = 1
+            else:
+                palavras_escolha.append(p)
+        palavras_forca.extend(palavras_escolha)
+        # LIMPANDO O CONSOLE
+        os.system('cls')
     else:
         palavras_forca.extend(palavras_frutas)
         print('Você não escolheu uma opção válida :/\nEntão escolhemos frutas para você!\n')
@@ -96,6 +113,8 @@ while jogar_novamente == 'S':
             print('----------------- TEMA: CORPO HUMANO -----------------\n')
         elif tipo_de_palavras == 5:
             print('----------------- TEMA: PAÍSES -----------------\n')
+        elif tipo_de_palavras == 6:
+            print('----------------- TEMA: LISTA DE PALAVRAS DEFINIDA PELO USUÁRIO -----------------\n')
         else:
             print('----------------- TEMA: FRUTAS -----------------\n')
 
@@ -190,6 +209,9 @@ while jogar_novamente == 'S':
     print('\n')
     print('\n')
     erros_faltantes = 6
+
+    if tipo_de_palavras == 6:
+        palavras_escolha = list()
 
     while aux == 0:
         jogar_novamente = input('Deseja jogar novamente? (S/N)').upper()
